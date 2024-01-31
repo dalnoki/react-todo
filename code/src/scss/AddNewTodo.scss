@@ -1,0 +1,26 @@
+form {
+  margin: 0 auto;
+  max-width: 540px;
+  position: relative;
+}
+
+.new-todo {
+  border: none;
+  border-radius: 5px;
+  height: 44px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 72px;
+  width: 540px;
+}
+
+.circle {
+  border: 1px solid #e3e4f1;
+  border-radius: 50%;
+  bottom: 20px;
+  height: 22px;
+  left: 24px;
+  margin: auto;
+  position: absolute;
+  width: 22px;
+}

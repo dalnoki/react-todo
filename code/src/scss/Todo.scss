@@ -1,0 +1,53 @@
+.check {
+  left: 6px;
+  position: absolute;
+  top: 7px;
+}
+
+.cross {
+  position: absolute;
+  right: 20px;
+  top: 24px;
+}
+
+.round {
+  position: relative;
+
+  & label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 22px;
+    left: -33px;
+    position: absolute;
+    top: 20px;
+    width: 22px;
+  }
+
+  & input[type="checkbox"] {
+    visibility: hidden;
+  }
+
+  & input[type="checkbox"]:checked + label {
+    background: linear-gradient(165deg, #55ddff, #c058f3);
+  }
+
+  & input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+
+  .label-checked {
+    background: linear-gradient(165deg, #55ddff, #c058f3);
+    border: none;
+    opacity: 1;
+  }
+}
+
+.todo-item {
+  background-color: white;
+  border-bottom: 1px solid #979797;
+  height: 64px;
+  padding-left: 72px;
+  width: 540px;
+}

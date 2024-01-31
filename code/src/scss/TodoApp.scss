@@ -1,0 +1,15 @@
+.todo {
+  &-app {
+    border-radius: 5px;
+    position: absolute;
+    right: 50%;
+    top: 154px;
+    transform: translateX(50%);
+  }
+
+  &-list {
+    border-radius: 5px;
+    list-style: none;
+    overflow: hidden;
+  }
+}
