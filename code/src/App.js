@@ -1,5 +1,5 @@
 import header from "./images/bg-desktop-light.jpg";
-import "./App.scss";
+import "./scss/App.scss";
 import TodoApp from "./components/TodoApp";
 
 function App() {

@@ -64,14 +64,15 @@ export default function TodoApp() {
             />
           );
         })}
+
+        <li className="app-footer">
+          <p>{notCompleted} items left</p>
+          <button onClick={showAll}>All</button>
+          <button onClick={showActive}>Active</button>
+          <button onClick={showCompleted}>Completed</button>
+          <button onClick={clearCompleted}>Clear Completed</button>
+        </li>
       </ul>
-      <div className="app-footer">
-        <p>{notCompleted} items left</p>
-        <button onClick={showAll}>All</button>
-        <button onClick={showActive}>Active</button>
-        <button onClick={showCompleted}>Completed</button>
-        <button onClick={clearCompleted}>Clear Completed</button>
-      </div>
     </div>
   );
 }

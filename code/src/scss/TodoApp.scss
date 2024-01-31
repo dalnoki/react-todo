@@ -9,7 +9,11 @@
 
   &-list {
     border-radius: 5px;
+    box-shadow: 2px 46px 148px -64px rgba(0, 0, 0, 0.8);
     list-style: none;
+    margin-left: 34px;
+    margin-top: 24px;
     overflow: hidden;
+    padding: 0;
   }
 }
