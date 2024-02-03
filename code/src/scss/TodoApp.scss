@@ -16,4 +16,32 @@
     overflow: hidden;
     padding: 0;
   }
+
+  &-footer {
+    &--light {
+      align-items: center;
+      color: #9495a5;
+      display: flex;
+      font-size: 14px;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+  }
+}
+
+.footer-button {
+  background: none;
+  color: #9495a5;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  border: none;
+
+  &:active {
+    color: #3a7cfd;
+  }
+
+  &:hover {
+    color: #494c6b;
+    cursor: pointer;
+  }
 }

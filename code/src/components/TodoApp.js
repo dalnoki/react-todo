@@ -5,7 +5,6 @@ import Todo from "../components/Todo";
 import AddNewTodo from "./AddNewTodo";
 
 export default function TodoApp() {
-  const [notCompleted, setNotCompleted] = useState(0);
   const [allTodos, setAllTodos] = useState([
     {
       description: "Jog in the park",
@@ -23,7 +22,27 @@ export default function TodoApp() {
       id: 3,
     },
   ]);
-  const [filteredTodos, setFilteredTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState([
+    {
+      description: "Jog in the park",
+      isCompleted: false,
+      id: 1,
+    },
+    {
+      description: "Walk the dog",
+      isCompleted: false,
+      id: 2,
+    },
+    {
+      description: "Walk the dog",
+      isCompleted: false,
+      id: 3,
+    },
+  ]);
+
+  const notCompletedItems = allTodos.filter(
+    (todo) => todo.isCompleted === false
+  ).length;
 
   const clearCompleted = () => {
     const filtered = allTodos.filter((todo) => todo.isCompleted === false);
@@ -31,14 +50,14 @@ export default function TodoApp() {
     setFilteredTodos(filtered);
   };
 
-  const showAll = () => {
+  const showAll = (e) => {
     setFilteredTodos(allTodos);
   };
-  const showActive = () => {
+  const showActive = (e) => {
     const filtered = allTodos.filter((todo) => todo.isCompleted === false);
     setFilteredTodos(filtered);
   };
-  const showCompleted = () => {
+  const showCompleted = (e) => {
     const filtered = allTodos.filter((todo) => todo.isCompleted === true);
     setFilteredTodos(filtered);
   };
@@ -65,12 +84,24 @@ export default function TodoApp() {
           );
         })}
 
-        <li className="app-footer">
-          <p>{notCompleted} items left</p>
-          <button onClick={showAll}>All</button>
-          <button onClick={showActive}>Active</button>
-          <button onClick={showCompleted}>Completed</button>
-          <button onClick={clearCompleted}>Clear Completed</button>
+        <li className="todo-footer--light">
+          <p>
+            {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
+          </p>
+          <div>
+            <button className="footer-button" onClick={showAll}>
+              All
+            </button>
+            <button className="footer-button" onClick={showActive}>
+              Active
+            </button>
+            <button className="footer-button" onClick={showCompleted}>
+              Completed
+            </button>
+          </div>
+          <button className="footer-button" onClick={clearCompleted}>
+            Clear Completed
+          </button>
         </li>
       </ul>
     </div>
