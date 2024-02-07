@@ -31,18 +31,21 @@ export default function AddNewTodo({
         id: Date.now(),
       },
     ]);
+    setValue("");
   };
 
   return (
     <form>
-      <input
-        className="new-todo"
-        type="text"
-        value={value}
-        onChange={handleChange}
-        placeholder="Create new todo..."
-      />
-      <div className="circle"></div>
+      <li draggable className="todo-item new-todo round">
+        <input type="checkbox" className="checkbox" />
+        <label disabled htmlFor="checkbox"></label>
+        <input
+          className="new-todo"
+          placeholder="Create a new todo..."
+          onChange={handleChange}
+          value={value}
+        />
+      </li>
       <input type="submit" hidden value="Submit" onClick={handleSubmit} />
     </form>
   );

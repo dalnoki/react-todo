@@ -1,4 +1,5 @@
 import "../scss/Todo.scss";
+import { useRef } from "react";
 
 export default function Todo({
   todo,
@@ -7,6 +8,7 @@ export default function Todo({
   id,
   isCompleted,
   setFilteredTodos,
+  filteredTodos,
 }) {
   const handleClick = (event) => {
     const updatedArray = allTodos.map((currentTodo) => {
@@ -31,8 +33,53 @@ export default function Todo({
     setFilteredTodos(filtered);
   };
 
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+
+  const dragStart = (e) => {
+    dragItem.current = id;
+  };
+
+  const dragEnter = (e) => {
+    dragOverItem.current = id;
+  };
+
+  const drop = () => {
+    const copyListItems = [...filteredTodos];
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+    console.log(copyListItems);
+    setFilteredTodos(copyListItems);
+  };
+
+  const handleDrop = () => {
+    const draggedIndex = dragItem.current;
+    const draggedTodo = filteredTodos[draggedIndex];
+    const filtered = filteredTodos.filter((_, index) => index !== draggedIndex);
+    const droppedIndex = dragOverItem.current;
+    const updatedTodos = [
+      ...filtered.slice(0, droppedIndex),
+      draggedTodo,
+      ...filtered.slice(droppedIndex),
+    ];
+    setFilteredTodos(updatedTodos);
+  };
+
+  const handleDragStart = (e) => {
+    dragStart(e);
+  };
+
   return (
-    <li draggable className="todo-item round">
+    <li
+      draggable
+      className="todo-item round"
+      onDragStart={handleDragStart}
+      onDragEnter={(e) => dragEnter(e)}
+      onDrop={drop}
+    >
       <input type="checkbox" className="checkbox" />
       <svg
         className="cross"
