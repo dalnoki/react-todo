@@ -1,4 +1,4 @@
-import "../scss/Todo.scss";
+import "../scss/temp.scss";
 import { useRef } from "react";
 
 export default function Todo({
@@ -81,20 +81,6 @@ export default function Todo({
       onDrop={drop}
     >
       <input type="checkbox" className="checkbox" />
-      <svg
-        className="cross"
-        onClick={handleDelete}
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-      >
-        <path
-          fill="#494C6B"
-          fillRule="evenodd"
-          d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
-        />
-      </svg>
-
       <label
         onClick={handleClick}
         htmlFor="checkbox"
@@ -115,6 +101,19 @@ export default function Todo({
         </svg>
       </label>
       <span>{todo.description}</span>
+      <svg
+        className="cross"
+        onClick={handleDelete}
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+      >
+        <path
+          fill="#494C6B"
+          fillRule="evenodd"
+          d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+        />
+      </svg>
     </li>
   );
 }

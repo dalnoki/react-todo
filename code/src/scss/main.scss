@@ -1,0 +1,220 @@
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+
+.todo {
+  &-app {
+    border-radius: 5px;
+    position: absolute;
+
+    @include respond(l) {
+      position: absolute;
+      right: 50%;
+      top: 154px;
+      transform: translateX(50%);
+    }
+  }
+
+  &-container {
+    height: 100vh;
+
+    &--light {
+      background-color: #fafafa;
+    }
+
+    &--dark {
+      background-color: #171823;
+    }
+  }
+
+  &-footer {
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+
+    @include respond(l) {
+      padding: 0 24px;
+    }
+
+    &--light {
+      color: #9495a5;
+    }
+  }
+
+  &-header {
+    position: absolute;
+  }
+
+  &-item {
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid #979797;
+    display: flex;
+    height: 64px;
+    justify-content: flex-start;
+    width: 327px;
+
+    @include respond(l) {
+      width: 540px;
+    }
+  }
+
+  &-list {
+    border-radius: 5px;
+    box-shadow: 2px 46px 148px -64px rgba(0, 0, 0, 0.8);
+    list-style: none;
+    margin-top: 24px;
+    overflow: hidden;
+
+    @include respond(l) {
+      padding: 0;
+    }
+  }
+
+  &-new {
+    border: none;
+    border-radius: 5px;
+    height: 44px;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid #979797;
+    display: flex;
+    justify-content: flex-start;
+
+    @include respond(l) {
+      padding-bottom: 10px;
+      padding-top: 10px;
+      width: 536px;
+    }
+  }
+
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: 50%;
+    top: 70px;
+    transform: translateX(50%);
+
+    h1 {
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: 15px;
+      margin: 0;
+
+      @include respond(l) {
+        font-size: 40px;
+        letter-spacing: 15px;
+      }
+    }
+
+    @include respond(l) {
+      width: 540px;
+    }
+  }
+}
+
+.button {
+  &--theme-change {
+    background: none;
+    border: none;
+  }
+
+  &--footer {
+    background: none;
+    color: #9495a5;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    border: none;
+
+    &:active {
+      color: #3a7cfd;
+    }
+
+    &:hover {
+      color: #494c6b;
+      cursor: pointer;
+    }
+  }
+}
+
+.App {
+  background-color: #fafafa;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  height: 800px;
+  letter-spacing: -0.25;
+}
+
+.check {
+  left: 38px;
+  position: absolute;
+  top: 27px;
+}
+
+.checkbox {
+  width: 24px;
+}
+
+.cross {
+  position: absolute;
+  right: 20px;
+  top: 24px;
+}
+
+.round {
+  position: relative;
+
+  & label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    height: 22px;
+    width: 22px;
+  }
+
+  & input[type="checkbox"] {
+    visibility: hidden;
+  }
+
+  & input[type="checkbox"]:checked + label {
+    background: linear-gradient(165deg, #55ddff, #c058f3);
+  }
+
+  & input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+
+  .label-checked {
+    background: linear-gradient(165deg, #55ddff, #c058f3);
+    border: 1px solid white;
+    opacity: 1;
+  }
+
+  & span {
+    padding-left: 24px;
+  }
+}
+
+form {
+  max-width: 350px;
+  position: relative;
+
+  @include respond(l) {
+    max-width: 540px;
+  }
+}
+
+.circle {
+  border: 1px solid #e3e4f1;
+  border-radius: 50%;
+  bottom: 20px;
+  height: 22px;
+  left: 24px;
+  margin: auto;
+  position: absolute;
+  width: 22px;
+}

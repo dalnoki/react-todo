@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../scss/AddNewTodo.scss";
+import "../scss/temp.scss";
 import "../images/icon-check.svg";
 
 export default function AddNewTodo({
@@ -36,7 +36,7 @@ export default function AddNewTodo({
 
   return (
     <form>
-      <li draggable className="todo-item new-todo round">
+      <li draggable className="todo-new round">
         <input type="checkbox" className="checkbox" />
         <label disabled htmlFor="checkbox"></label>
         <input

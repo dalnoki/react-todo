@@ -1,10 +1,13 @@
 import { useState, useRef } from "react";
 
-import "../scss/TodoApp.scss";
+import "../scss/temp.scss";
 import Todo from "../components/Todo";
 import AddNewTodo from "./AddNewTodo";
-import HeaderLight from "../images/bg-desktop-light.jpg";
-import HeaderDark from "../images/bg-desktop-dark.jpg";
+import Footer from "./Footer";
+import HeaderDesktopLight from "../images/bg-desktop-light.jpg";
+import HeaderDesktopDark from "../images/bg-desktop-dark.jpg";
+import HeaderMobileDark from "../images/bg-mobile-dark.jpg";
+import HeaderMobileLight from "../images/bg-mobile-light.jpg";
 
 export default function TodoApp() {
   const [allTodos, setAllTodos] = useState([
@@ -64,34 +67,12 @@ export default function TodoApp() {
     setFilteredTodos(filteredTodos);
   };
 
-  const notCompletedItems = allTodos.filter(
-    (todo) => todo.isCompleted === false
-  ).length;
-
-  const clearCompleted = () => {
-    const filtered = allTodos.filter((todo) => todo.isCompleted === false);
-    setAllTodos(filtered);
-    setFilteredTodos(filtered);
-  };
-
   const handleThemeChange = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };
 
   const handleDragStart = (e) => {
     dragStart(e);
-  };
-
-  const showAll = (e) => {
-    setFilteredTodos(allTodos);
-  };
-  const showActive = (e) => {
-    const filtered = allTodos.filter((todo) => todo.isCompleted === false);
-    setFilteredTodos(filtered);
-  };
-  const showCompleted = (e) => {
-    const filtered = allTodos.filter((todo) => todo.isCompleted === true);
-    setFilteredTodos(filtered);
   };
 
   return (
@@ -103,14 +84,31 @@ export default function TodoApp() {
       }`}
     >
       <header className="todo-header">
-        <img
-          src={currentTheme === "light" ? HeaderLight : HeaderDark}
-          className="App-logo"
-          alt="logo"
-        />
+        <picture>
+          <source
+            type="image/jpeg"
+            media="(max-width: 500px)"
+            srcSet={
+              currentTheme === "light" ? HeaderMobileLight : HeaderMobileDark
+            }
+          />
+          <source
+            type="image/jpeg"
+            media="(min-width: 1000px)"
+            srcSet={
+              currentTheme === "light" ? HeaderDesktopLight : HeaderDesktopDark
+            }
+          />
+          <img
+            src={
+              currentTheme === "light" ? HeaderMobileLight : HeaderMobileDark
+            }
+            alt="header"
+          />
+        </picture>
         <div className="todo-title">
           <h1>TODO</h1>
-          <button className="theme-change" onClick={handleThemeChange}>
+          <button className="button--theme-change" onClick={handleThemeChange}>
             {currentTheme === "light" ? (
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
                 <path
@@ -157,27 +155,12 @@ export default function TodoApp() {
               />
             );
           })}
-
-          <li className="todo-footer--light">
-            <p>
-              {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
-            </p>
-            <div>
-              <button className="footer-button" onClick={showAll}>
-                All
-              </button>
-              <button className="footer-button" onClick={showActive}>
-                Active
-              </button>
-              <button className="footer-button" onClick={showCompleted}>
-                Completed
-              </button>
-            </div>
-            <button className="footer-button" onClick={clearCompleted}>
-              Clear Completed
-            </button>
-          </li>
         </ul>
+        <Footer
+          allTodos={allTodos}
+          setAllTodos={setAllTodos}
+          setFilteredTodos={setFilteredTodos}
+        />
       </div>
     </div>
   );
