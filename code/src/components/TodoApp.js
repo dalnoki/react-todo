@@ -46,12 +46,12 @@ export default function TodoApp() {
   const dragItem = useRef();
   const dragOverItem = useRef();
 
-  const dragStart = (e) => {
-    dragItem.current = e.target.id;
+  const dragStart = (e, index) => {
+    dragItem.current = index;
   };
 
-  const dragEnter = (e) => {
-    dragOverItem.current = e.currentTarget.id;
+  const dragEnter = (e, index) => {
+    dragOverItem.current = index;
   };
 
   const drop = () => {
@@ -61,15 +61,11 @@ export default function TodoApp() {
     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
     dragItem.current = null;
     dragOverItem.current = null;
-    setFilteredTodos(filteredTodos);
+    setFilteredTodos(copyListItems); // Update the state with the reordered list
   };
 
   const handleThemeChange = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
-  };
-
-  const handleDragStart = (e) => {
-    dragStart(e);
   };
 
   return (
@@ -90,24 +86,29 @@ export default function TodoApp() {
           allTodos={allTodos}
           setFilteredTodos={setFilteredTodos}
         />
-        <ul
-          className="todo-list"
-          onDragStart={handleDragStart}
-          onDragEnter={(e) => dragEnter(e)}
-          onDragEnd={drop}
-        >
-          {filteredTodos.map((currentTodo) => {
+        <ul className="todo-list">
+          {filteredTodos.map((currentTodo, index) => {
             return (
-              <Todo
-                todo={currentTodo}
-                allTodos={allTodos}
-                setAllTodos={setAllTodos}
-                setFilteredTodos={setFilteredTodos}
-                id={currentTodo.id}
+              <li
                 key={currentTodo.id}
-                isCompleted={currentTodo.isCompleted}
-                filteredTodos={filteredTodos}
-              />
+                draggable
+                onDragStart={(e) => dragStart(e, index)}
+                onDragEnter={(e) => dragEnter(e, index)}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={drop}
+                className="todo-item round"
+              >
+                <Todo
+                  todo={currentTodo}
+                  allTodos={allTodos}
+                  setAllTodos={setAllTodos}
+                  setFilteredTodos={setFilteredTodos}
+                  id={currentTodo.id}
+                  key={currentTodo.id}
+                  isCompleted={currentTodo.isCompleted}
+                  filteredTodos={filteredTodos}
+                />
+              </li>
             );
           })}
         </ul>
