@@ -1,6 +1,12 @@
 @use "abstracts/variables" as *;
 @use "abstracts/mixins" as *;
 
+body {
+  background-color: #fafafa;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 12px;
+}
+
 .button {
   &--theme-change {
     background: none;
@@ -11,7 +17,6 @@
     background: none;
     color: #9495a5;
     font-family: "Josefin Sans", sans-serif;
-    font-weight: bold;
     border: none;
 
     &:active {
@@ -23,6 +28,12 @@
       cursor: pointer;
     }
   }
+}
+
+.check {
+  left: 27px;
+  position: absolute;
+  top: 20px;
 }
 
 .circle {
@@ -40,6 +51,14 @@
   position: absolute;
   right: 20px;
   top: 17px;
+}
+
+.new-todo {
+  padding-left: 24px;
+
+  &::placeholder {
+    font-family: "Josefin Sans", sans-serif;
+  }
 }
 
 .round {
@@ -82,33 +101,50 @@
   &-app {
     background: none;
     border-radius: 5px;
-    box-shadow: 2px 46px 148px -64px rgba(0, 0, 0, 0.8);
     font-family: "Josefin Sans", sans-serif;
-    left: 24px;
+
     margin: 0 auto;
     width: 327px;
     position: absolute;
+    right: 50%;
     top: 123px;
+    transform: translateX(50%);
   }
 
   &-footer {
-    align-items: center;
-    border-bottom: 1px solid #e3e4f1;
-    box-shadow: 2px 46px 148px -64px rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 14px;
-    justify-content: space-between;
-
     @include respond(l) {
+      border-bottom: 1px solid #e3e4f1;
       padding: 0 24px;
     }
 
     &--buttons {
       align-items: center;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px -6px 20px -17px black;
       display: flex;
       height: 48px;
       justify-content: space-between;
+      list-style: none;
+      margin-top: 16px;
+      padding: 0 80px;
+    }
+
+    &--buttons-container {
+      padding: 0;
+    }
+
+    &--completed {
+      align-items: center;
+      border-radius: 0 5px 5px 0;
+      display: flex;
+      overflow: hidden;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &--completed-container {
+      padding: 0 20px;
     }
 
     &--clear {
@@ -116,10 +152,11 @@
     }
 
     &--light {
-      box-shadow: 2px 46px 148px -64px rgba(0, 0, 0, 0.8);
+      background-color: #fff;
+      box-shadow: 0px 11px 20px -22px rgba(0, 0, 0, 0.8);
       color: #9495a5;
       letter-spacing: -0.17px;
-      padding: 0 20px;
+      margin: 0;
     }
   }
 
@@ -139,6 +176,7 @@
   &-list {
     border-radius: 5px;
     list-style: none;
+    margin-bottom: 0;
     overflow: hidden;
     padding: 0;
   }
@@ -164,7 +202,9 @@
     justify-content: space-around;
     letter-spacing: 15px;
     position: absolute;
+    right: 50%;
     top: 48px;
+    transform: translateX(50%);
     width: 100vh;
 
     h1 {

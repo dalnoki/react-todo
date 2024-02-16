@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../scss/temp.scss";
 import "../images/icon-check.svg";
 
@@ -8,6 +8,8 @@ export default function AddNewTodo({
   setFilteredTodos,
 }) {
   const [value, setValue] = useState("");
+
+  const searchInput = useRef(null);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -43,6 +45,7 @@ export default function AddNewTodo({
           className="new-todo"
           placeholder="Create a new todo..."
           onChange={handleChange}
+          ref={searchInput}
           value={value}
         />
       </li>

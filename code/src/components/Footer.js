@@ -23,8 +23,8 @@ export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
 
   return (
     <>
-      <ul>
-        <li className="todo-footer todo-footer--light">
+      <ul className="todo-footer--completed-container todo-footer--light">
+        <li className="todo-footer--completed">
           <p>
             {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
           </p>
@@ -33,8 +33,8 @@ export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
           </button>
         </li>
       </ul>
-      <ul>
-        <li className="todo-footer">
+      <ul className="todo-footer--buttons-container todo-footer--light">
+        <li className="todo-footer--buttons">
           <button className="button--footer" onClick={showAll}>
             All
           </button>
