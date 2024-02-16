@@ -54,10 +54,15 @@ body {
 }
 
 .new-todo {
-  padding-left: 24px;
+  margin-left: 24px;
 
   &::placeholder {
     font-family: "Josefin Sans", sans-serif;
+  }
+
+  &:focus {
+    outline: none;
+    transform: scale(1.08);
   }
 }
 
