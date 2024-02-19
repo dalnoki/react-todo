@@ -96,7 +96,11 @@ export default function TodoApp() {
                 onDragEnter={(e) => dragEnter(e, index)}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={drop}
-                className="todo-item round"
+                className={`${
+                  currentTodo.isCompleted === true
+                    ? "todo-item--completed"
+                    : null
+                } todo-item round`}
               >
                 <Todo
                   todo={currentTodo}
@@ -106,7 +110,6 @@ export default function TodoApp() {
                   id={currentTodo.id}
                   key={currentTodo.id}
                   isCompleted={currentTodo.isCompleted}
-                  filteredTodos={filteredTodos}
                 />
               </li>
             );

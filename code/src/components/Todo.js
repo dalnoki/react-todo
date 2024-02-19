@@ -7,7 +7,6 @@ export default function Todo({
   id,
   isCompleted,
   setFilteredTodos,
-  filteredTodos,
 }) {
   const handleClick = (event) => {
     const updatedArray = allTodos.map((currentTodo) => {

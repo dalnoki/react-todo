@@ -28,7 +28,7 @@ export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
           <p>
             {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
           </p>
-          <button className="button--footer" onClick={clearCompleted}>
+          <button className="button--clear" onClick={clearCompleted}>
             Clear Completed
           </button>
         </li>
