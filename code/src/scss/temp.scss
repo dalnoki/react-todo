@@ -2,7 +2,6 @@
 @use "abstracts/mixins" as *;
 
 body {
-  background-color: #fafafa;
   font-family: "Josefin Sans", sans-serif;
   font-size: 12px;
 }
@@ -95,7 +94,6 @@ body {
   position: relative;
 
   & label {
-    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 50%;
     cursor: pointer;
@@ -139,6 +137,10 @@ body {
     right: 50%;
     top: 123px;
     transform: translateX(50%);
+  }
+
+  &-container {
+    height: 100vh;
   }
 
   &-footer {
@@ -247,5 +249,13 @@ body {
       margin: 0;
       font-size: 30px;
     }
+  }
+
+  &--dark {
+    background: #25273d;
+  }
+
+  &--light {
+    background: white;
   }
 }

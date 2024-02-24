@@ -6,6 +6,7 @@ export default function AddNewTodo({
   allTodos,
   setAllTodos,
   setFilteredTodos,
+  currentTheme,
 }) {
   const [value, setValue] = useState("");
 
@@ -38,11 +39,18 @@ export default function AddNewTodo({
 
   return (
     <form>
-      <li draggable className="todo-new round">
+      <li
+        draggable
+        className={`todo-new round ${
+          currentTheme === "light" ? "todo--light" : "todo--dark"
+        }`}
+      >
         <input type="checkbox" className="checkbox" />
         <label disabled htmlFor="checkbox"></label>
         <input
-          className="new-todo"
+          className={`new-todo ${
+            currentTheme === "light" ? "todo--light" : "todo--dark"
+          }`}
           placeholder="Create a new todo..."
           onChange={handleChange}
           ref={searchInput}

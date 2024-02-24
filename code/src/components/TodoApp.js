@@ -71,9 +71,7 @@ export default function TodoApp() {
   return (
     <div
       className={`todo-container ${
-        currentTheme === "light"
-          ? "todo-container--light"
-          : "todo-container--dark"
+        currentTheme === "light" ? "todo--light" : "todo--dark"
       }`}
     >
       <Header
@@ -85,6 +83,7 @@ export default function TodoApp() {
           setAllTodos={setAllTodos}
           allTodos={allTodos}
           setFilteredTodos={setFilteredTodos}
+          currentTheme={currentTheme}
         />
         <ul className="todo-list">
           {filteredTodos.map((currentTodo, index) => {
@@ -100,10 +99,13 @@ export default function TodoApp() {
                   currentTodo.isCompleted === true
                     ? "todo-item--completed"
                     : null
-                } todo-item round`}
+                } todo-item ${
+                  currentTheme === "light" ? "todo--light" : "todo--dark"
+                } round`}
               >
                 <Todo
                   todo={currentTodo}
+                  currentTheme={currentTheme}
                   allTodos={allTodos}
                   setAllTodos={setAllTodos}
                   setFilteredTodos={setFilteredTodos}
@@ -119,6 +121,7 @@ export default function TodoApp() {
           allTodos={allTodos}
           setAllTodos={setAllTodos}
           setFilteredTodos={setFilteredTodos}
+          currentTheme={currentTheme}
         />
       </div>
     </div>

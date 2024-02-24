@@ -7,6 +7,7 @@ export default function Todo({
   id,
   isCompleted,
   setFilteredTodos,
+  currentTheme,
 }) {
   const handleClick = (event) => {
     const updatedArray = allTodos.map((currentTodo) => {
@@ -37,7 +38,9 @@ export default function Todo({
       <label
         onClick={handleClick}
         htmlFor="checkbox"
-        className={isCompleted ? "label-checked" : null}
+        className={`${isCompleted ? "label-checked" : null} ${
+          currentTheme === "light" ? "todo--light" : "todo--dark"
+        }`}
       >
         <svg
           className="check"
