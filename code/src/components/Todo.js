@@ -38,7 +38,11 @@ export default function Todo({
       <label
         onClick={handleClick}
         htmlFor="checkbox"
-        className={`checkbox-label ${isCompleted ? "label-checked" : ""}`}
+        className={`checkbox-label ${
+          currentTheme === "light"
+            ? "checkbox-label--light"
+            : "checkbox-label--dark"
+        } ${isCompleted ? "label-checked" : ""}`}
       >
         <svg
           className="check"
@@ -48,7 +52,9 @@ export default function Todo({
         >
           <path
             fill="none"
-            stroke="#FFF"
+            className={`${
+              currentTheme === "light" ? "check--light" : "check--dark"
+            } ${isCompleted ? "label-checked" : ""}`}
             strokeWidth="2"
             d="M1 4.304L3.696 7l6-6"
           />

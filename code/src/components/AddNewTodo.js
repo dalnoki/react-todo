@@ -46,7 +46,15 @@ export default function AddNewTodo({
         }`}
       >
         <input type="checkbox" className="checkbox" />
-        <label disabled htmlFor="checkbox"></label>
+        <label
+          disabled
+          htmlFor="checkbox"
+          class={`checkbox-label ${
+            currentTheme === "light"
+              ? "checkbox-label--light"
+              : "checkbox-label--dark"
+          }`}
+        ></label>
         <input
           className={`new-todo ${
             currentTheme === "light" ? "todo--light" : "todo--dark"

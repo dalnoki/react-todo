@@ -59,6 +59,42 @@ body {
   left: 27px;
   position: absolute;
   top: 20px;
+
+  &--dark {
+    stroke: #25273d;
+  }
+
+  &--completed {
+    stroke: #fff;
+  }
+}
+
+.checkbox-label {
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: 22px;
+  width: 22px;
+
+  &--light {
+    border: 1px solid #ccc;
+
+    &:hover {
+      background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+      border: 1px solid transparent;
+    }
+  }
+
+  &--dark {
+    border: 1px solid #393a4b;
+
+    &:hover {
+      background: linear-gradient(#25273d, #25273d) padding-box,
+        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+      border: 1px solid transparent;
+    }
+  }
 }
 
 .circle {
@@ -78,10 +114,9 @@ body {
   top: 17px;
 }
 
-.label-checked {
-  background: linear-gradient(165deg, #55ddff, #c058f3);
-  border: 1px solid white;
-  opacity: 1;
+.dad-info {
+  margin-top: 49px;
+  text-align: center;
 }
 
 .new-todo {
@@ -100,21 +135,6 @@ body {
 .round {
   position: relative;
 
-  & label {
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-    display: block;
-    height: 22px;
-    width: 22px;
-
-    &:hover {
-      background: linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(165deg, #55ddff, #c058f3) border-box;
-      border: 1px solid transparent;
-    }
-  }
-
   & input[type="checkbox"] {
     visibility: hidden;
   }
@@ -129,14 +149,13 @@ body {
 
   .label-checked {
     background: linear-gradient(165deg, #55ddff, #c058f3);
-    border: 1px solid white;
     opacity: 1;
+    stroke: #fff;
 
     &:hover {
       border: 1px solid transparent;
       background: linear-gradient(transparent, transparent) padding-box,
         linear-gradient(165deg, #55ddff, #c058f3) border-box;
-      border: 1px solid white;
     }
   }
 
@@ -237,11 +256,6 @@ body {
       border-radius: 5px 5px 0 0;
     }
 
-    &--completed {
-      color: #d1d2da;
-      text-decoration: line-through;
-    }
-
     &--dark {
       background: #25273d;
       border-bottom: 1px solid #393a4b;
@@ -251,6 +265,18 @@ body {
     &--light {
       background: white;
       border-bottom: 1px solid #e3e4f1;
+    }
+
+    &--completed {
+      text-decoration: line-through;
+    }
+
+    &--completed--dark {
+      color: #4d5067;
+    }
+
+    &--completed--light {
+      color: #d1d2da;
     }
   }
 

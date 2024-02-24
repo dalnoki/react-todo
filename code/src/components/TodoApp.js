@@ -105,6 +105,16 @@ export default function TodoApp() {
                   currentTheme === "light"
                     ? "todo-item--light"
                     : "todo-item--dark"
+                } ${
+                  currentTodo.isCompleted && currentTheme === "light"
+                    ? "todo-item--completed--light"
+                    : ""
+                } 
+                
+                ${
+                  currentTodo.isCompleted && currentTheme === "dark"
+                    ? "todo-item--completed--dark"
+                    : ""
                 } round`}
               >
                 <Todo
@@ -127,6 +137,7 @@ export default function TodoApp() {
           setFilteredTodos={setFilteredTodos}
           currentTheme={currentTheme}
         />
+        <p className="dad-info">Drag and drop to reorder list</p>
       </div>
     </div>
   );
