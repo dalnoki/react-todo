@@ -71,7 +71,9 @@ export default function TodoApp() {
   return (
     <div
       className={`todo-container ${
-        currentTheme === "light" ? "todo--light" : "todo--dark"
+        currentTheme === "light"
+          ? "todo-background--light"
+          : "todo-background--dark"
       }`}
     >
       <Header
@@ -100,7 +102,9 @@ export default function TodoApp() {
                     ? "todo-item--completed"
                     : null
                 } todo-item ${
-                  currentTheme === "light" ? "todo--light" : "todo--dark"
+                  currentTheme === "light"
+                    ? "todo-item--light"
+                    : "todo-item--dark"
                 } round`}
               >
                 <Todo

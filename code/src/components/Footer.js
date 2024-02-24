@@ -37,12 +37,19 @@ export default function Footer({
           <p>
             {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
           </p>
-          <button className="button--clear" onClick={clearCompleted}>
+          <button
+            className={`button--clear ${
+              currentTheme === "light"
+                ? "button--clear--light"
+                : "button--clear--dark"
+            }`}
+            onClick={clearCompleted}
+          >
             Clear Completed
           </button>
         </li>
       </ul>
-      <ul className="todo-footer--buttons-container todo-footer--light">
+      <ul className="todo-footer--buttons-container">
         <li
           className={`todo-footer--buttons ${
             currentTheme === "light" ? "todo--light" : "todo--dark"

@@ -15,7 +15,6 @@ body {
   &--clear {
     background: none;
     border: none;
-    color: #9495a5;
     font-family: "Josefin Sans", sans-serif;
     font-size: 12px;
 
@@ -26,6 +25,14 @@ body {
     &:hover {
       color: #494c6b;
       cursor: pointer;
+    }
+
+    &--dark {
+      color: #5b5e7e;
+    }
+
+    &--light {
+      color: #9495a5;
     }
   }
 
@@ -100,6 +107,12 @@ body {
     display: block;
     height: 22px;
     width: 22px;
+
+    &:hover {
+      background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+      border: 1px solid transparent;
+    }
   }
 
   & input[type="checkbox"] {
@@ -118,6 +131,13 @@ body {
     background: linear-gradient(165deg, #55ddff, #c058f3);
     border: 1px solid white;
     opacity: 1;
+
+    &:hover {
+      border: 1px solid transparent;
+      background: linear-gradient(transparent, transparent) padding-box,
+        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+      border: 1px solid white;
+    }
   }
 
   & span {
@@ -137,6 +157,14 @@ body {
     right: 50%;
     top: 123px;
     transform: translateX(50%);
+  }
+
+  &-background--light {
+    background: #fafafa;
+  }
+
+  &-background--dark {
+    background: #171823;
   }
 
   &-container {
@@ -177,6 +205,8 @@ body {
     }
 
     &--completed-container {
+      border-radius: 0 0 5px 5px;
+      margin-top: 0;
       padding: 0 20px;
     }
 
@@ -199,20 +229,32 @@ body {
 
   &-item {
     align-items: center;
-    background: white;
-    border-bottom: 1px solid #e3e4f1;
     display: flex;
     height: 48px;
     justify-content: flex-start;
+
+    &:first-child {
+      border-radius: 5px 5px 0 0;
+    }
 
     &--completed {
       color: #d1d2da;
       text-decoration: line-through;
     }
+
+    &--dark {
+      background: #25273d;
+      border-bottom: 1px solid #393a4b;
+      color: #c8cbe7;
+    }
+
+    &--light {
+      background: white;
+      border-bottom: 1px solid #e3e4f1;
+    }
   }
 
   &-list {
-    border-radius: 5px;
     list-style: none;
     margin-bottom: 0;
     overflow: hidden;
@@ -253,9 +295,11 @@ body {
 
   &--dark {
     background: #25273d;
+    color: #5b5e7e;
   }
 
   &--light {
     background: white;
+    color: #9495a5;
   }
 }

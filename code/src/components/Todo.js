@@ -38,9 +38,7 @@ export default function Todo({
       <label
         onClick={handleClick}
         htmlFor="checkbox"
-        className={`${isCompleted ? "label-checked" : null} ${
-          currentTheme === "light" ? "todo--light" : "todo--dark"
-        }`}
+        className={`checkbox-label ${isCompleted ? "label-checked" : ""}`}
       >
         <svg
           className="check"
