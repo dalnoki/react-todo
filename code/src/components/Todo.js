@@ -1,4 +1,4 @@
-import "../scss/temp.scss";
+import "../scss/main.scss";
 
 export default function Todo({
   todo,

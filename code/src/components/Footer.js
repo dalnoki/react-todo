@@ -37,6 +37,15 @@ export default function Footer({
           <p>
             {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
           </p>
+          <button className="button--hidden" onClick={showAll}>
+            All
+          </button>
+          <button className="button--hidden" onClick={showActive}>
+            Active
+          </button>
+          <button className="button--hidden" onClick={showCompleted}>
+            Completed
+          </button>
           <button
             className={`button--clear ${
               currentTheme === "light"

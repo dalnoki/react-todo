@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "../scss/temp.scss";
+import "../scss/main.scss";
 import "../images/icon-check.svg";
 
 export default function AddNewTodo({
@@ -49,7 +49,7 @@ export default function AddNewTodo({
         <label
           disabled
           htmlFor="checkbox"
-          class={`checkbox-label ${
+          className={`checkbox-label ${
             currentTheme === "light"
               ? "checkbox-label--light"
               : "checkbox-label--dark"

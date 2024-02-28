@@ -1,118 +1,9 @@
 @use "abstracts/variables" as *;
 @use "abstracts/mixins" as *;
 
-.todo {
-  &-app {
-    border-radius: 5px;
-    position: absolute;
-
-    @include respond(l) {
-      position: absolute;
-      right: 50%;
-      top: 154px;
-      transform: translateX(50%);
-    }
-  }
-
-  &-container {
-    height: 100vh;
-
-    &--light {
-      background-color: #fafafa;
-    }
-
-    &--dark {
-      background-color: #171823;
-    }
-  }
-
-  &-footer {
-    align-items: center;
-    display: flex;
-    font-size: 14px;
-    justify-content: space-between;
-
-    @include respond(l) {
-      padding: 0 24px;
-    }
-
-    &--light {
-      color: #9495a5;
-    }
-  }
-
-  &-header {
-    position: absolute;
-  }
-
-  &-item {
-    align-items: center;
-    background-color: white;
-    border-bottom: 1px solid #979797;
-    display: flex;
-    height: 64px;
-    justify-content: flex-start;
-    width: 327px;
-
-    @include respond(l) {
-      width: 540px;
-    }
-  }
-
-  &-list {
-    border-radius: 5px;
-    box-shadow: 2px 46px 148px -64px rgba(0, 0, 0, 0.8);
-    list-style: none;
-    margin-top: 24px;
-    overflow: hidden;
-
-    @include respond(l) {
-      padding: 0;
-    }
-  }
-
-  &-new {
-    border: none;
-    border-radius: 5px;
-    height: 44px;
-    align-items: center;
-    background-color: white;
-    border-bottom: 1px solid #979797;
-    display: flex;
-    justify-content: flex-start;
-
-    @include respond(l) {
-      padding-bottom: 10px;
-      padding-top: 10px;
-      width: 536px;
-    }
-  }
-
-  &-title {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    right: 50%;
-    top: 70px;
-    transform: translateX(50%);
-
-    h1 {
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      letter-spacing: 15px;
-      margin: 0;
-
-      @include respond(l) {
-        font-size: 40px;
-        letter-spacing: 15px;
-      }
-    }
-
-    @include respond(l) {
-      width: 540px;
-    }
-  }
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 12px;
 }
 
 .button {
@@ -121,12 +12,60 @@
     border: none;
   }
 
+  &--clear {
+    background: none;
+    border: none;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 12px;
+
+    &:active {
+      color: #3a7cfd;
+    }
+
+    &:hover {
+      color: #494c6b;
+      cursor: pointer;
+    }
+
+    &--dark {
+      color: #5b5e7e;
+    }
+
+    &--light {
+      color: #9495a5;
+    }
+  }
+
   &--footer {
     background: none;
+    border: none;
     color: #9495a5;
     font-family: "Josefin Sans", sans-serif;
     font-weight: bold;
+    font-size: 14px;
+
+    &:active {
+      color: #3a7cfd;
+    }
+
+    &:hover {
+      color: #494c6b;
+      cursor: pointer;
+    }
+  }
+
+  &--hidden {
+    background: none;
     border: none;
+    color: #9495a5;
+    display: none;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+
+    @include respond(m) {
+      display: block;
+    }
 
     &:active {
       color: #3a7cfd;
@@ -139,42 +78,93 @@
   }
 }
 
-.App {
-  background-color: #fafafa;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
-  height: 800px;
-  letter-spacing: -0.25;
-}
-
 .check {
-  left: 38px;
+  left: 27px;
   position: absolute;
-  top: 27px;
+  top: 20px;
+
+  &--dark {
+    stroke: #25273d;
+  }
+
+  &--completed {
+    stroke: #fff;
+  }
 }
 
-.checkbox {
-  width: 24px;
+.checkbox-label {
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: 22px;
+  width: 22px;
+
+  &--light {
+    border: 1px solid #ccc;
+
+    &:hover {
+      background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+      border: 1px solid transparent;
+    }
+  }
+
+  &--dark {
+    border: 1px solid #393a4b;
+
+    &:hover {
+      background: linear-gradient(#25273d, #25273d) padding-box,
+        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+      border: 1px solid transparent;
+    }
+  }
+}
+
+.circle {
+  border: 1px solid #e3e4f1;
+  border-radius: 50%;
+  bottom: 20px;
+  height: 22px;
+  left: 24px;
+  margin: auto;
+  position: absolute;
+  width: 22px;
 }
 
 .cross {
   position: absolute;
   right: 20px;
-  top: 24px;
+  top: 17px;
+}
+
+.dad-info {
+  margin-top: 49px;
+  text-align: center;
+
+  &--dark {
+    color: #5b5e7e;
+  }
+
+  &--light {
+    color: #9495a5;
+  }
+}
+
+.new-todo {
+  margin-left: 24px;
+
+  &::placeholder {
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  &:focus {
+    outline: none;
+    transform: scale(1.08);
+  }
 }
 
 .round {
   position: relative;
-
-  & label {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-    display: block;
-    height: 22px;
-    width: 22px;
-  }
 
   & input[type="checkbox"] {
     visibility: hidden;
@@ -190,8 +180,14 @@
 
   .label-checked {
     background: linear-gradient(165deg, #55ddff, #c058f3);
-    border: 1px solid white;
     opacity: 1;
+    stroke: #fff;
+
+    &:hover {
+      border: 1px solid transparent;
+      background: linear-gradient(transparent, transparent) padding-box,
+        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+    }
   }
 
   & span {
@@ -199,22 +195,188 @@
   }
 }
 
-form {
-  max-width: 350px;
-  position: relative;
+.todo {
+  &-app {
+    background: none;
+    border-radius: 5px;
+    font-family: "Josefin Sans", sans-serif;
 
-  @include respond(l) {
-    max-width: 540px;
+    margin: 0 auto;
+    width: 327px;
+    position: absolute;
+    right: 50%;
+    top: 123px;
+    transform: translateX(50%);
+
+    @include respond(m) {
+      width: 541px;
+    }
   }
-}
 
-.circle {
-  border: 1px solid #e3e4f1;
-  border-radius: 50%;
-  bottom: 20px;
-  height: 22px;
-  left: 24px;
-  margin: auto;
-  position: absolute;
-  width: 22px;
+  &-background--light {
+    background: #fafafa;
+  }
+
+  &-background--dark {
+    background: #171823;
+  }
+
+  &-container {
+    height: 100vh;
+  }
+
+  &-footer {
+    @include respond(l) {
+      border-bottom: 1px solid #e3e4f1;
+      padding: 0 24px;
+    }
+
+    &--buttons {
+      align-items: center;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px -6px 20px -17px black;
+      display: flex;
+      height: 48px;
+      justify-content: space-between;
+      list-style: none;
+      margin-top: 16px;
+      padding: 0 80px;
+    }
+
+    &--buttons-container {
+      padding: 0;
+
+      @include respond(m) {
+        display: none;
+      }
+    }
+
+    &--completed {
+      align-items: center;
+      border-radius: 0 5px 5px 0;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 7px 0;
+      width: 100%;
+    }
+
+    &--completed-container {
+      border-radius: 0 0 5px 5px;
+      margin-top: 0;
+      padding: 0 20px;
+    }
+
+    &--clear {
+      display: flex;
+    }
+
+    &--light {
+      background-color: #fff;
+      box-shadow: 1px 17px 20px -8px rgba(0, 0, 0, 0.8);
+      color: #9495a5;
+      letter-spacing: -0.17px;
+      margin: 0;
+    }
+  }
+
+  &-header {
+    position: relative;
+  }
+
+  &-item {
+    align-items: center;
+    display: flex;
+    height: 48px;
+    justify-content: flex-start;
+
+    &:first-child {
+      border-radius: 5px 5px 0 0;
+    }
+
+    &--dark {
+      background: #25273d;
+      border-bottom: 1px solid #393a4b;
+      color: #c8cbe7;
+    }
+
+    &--light {
+      background: white;
+      border-bottom: 1px solid #e3e4f1;
+    }
+
+    &--completed {
+      text-decoration: line-through;
+    }
+
+    &--completed--dark {
+      color: #4d5067;
+    }
+
+    &--completed--light {
+      color: #d1d2da;
+    }
+  }
+
+  &-list {
+    list-style: none;
+    margin-bottom: 0;
+    overflow: hidden;
+    padding: 0;
+
+    @include respond(m) {
+      width: 541px;
+    }
+  }
+
+  &-new {
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    height: 48px;
+    list-style: none;
+
+    @include respond(m) {
+      width: 541px;
+    }
+
+    input {
+      border: none;
+    }
+  }
+
+  &-title {
+    align-items: center;
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    letter-spacing: 15px;
+    position: absolute;
+    right: 50%;
+    top: 48px;
+    transform: translateX(50%);
+    width: 324px;
+
+    @include respond(m) {
+      width: 541px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+  }
+
+  &--dark {
+    background: #25273d;
+    color: #5b5e7e;
+  }
+
+  &--light {
+    background: white;
+    color: #9495a5;
+  }
 }

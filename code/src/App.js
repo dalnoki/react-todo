@@ -1,4 +1,4 @@
-import "./scss/temp.scss";
+import "./scss/main.scss";
 import TodoApp from "./components/TodoApp";
 
 function App() {

@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-import "../scss/temp.scss";
+import "../scss/main.scss";
 import Todo from "../components/Todo";
 import AddNewTodo from "./AddNewTodo";
 import Header from "./Header";
@@ -124,7 +124,6 @@ export default function TodoApp() {
                   setAllTodos={setAllTodos}
                   setFilteredTodos={setFilteredTodos}
                   id={currentTodo.id}
-                  key={currentTodo.id}
                   isCompleted={currentTodo.isCompleted}
                 />
               </li>
@@ -137,7 +136,13 @@ export default function TodoApp() {
           setFilteredTodos={setFilteredTodos}
           currentTheme={currentTheme}
         />
-        <p className="dad-info">Drag and drop to reorder list</p>
+        <p
+          className={`dad-info ${
+            currentTheme === "light" ? "dad-info--light" : "dad-info--dark"
+          }`}
+        >
+          Drag and drop to reorder list
+        </p>
       </div>
     </div>
   );
