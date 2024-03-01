@@ -1,5 +1,6 @@
 @use "abstracts/variables" as *;
 @use "abstracts/mixins" as *;
+@use "abstracts/functions" as *;
 
 body {
   font-family: "Josefin Sans", sans-serif;
@@ -16,40 +17,40 @@ body {
     background: none;
     border: none;
     font-family: "Josefin Sans", sans-serif;
-    font-size: 12px;
+    font-size: px-to-rem(12);
 
     &:active {
-      color: #3a7cfd;
+      color: $active-blue;
     }
 
     &:hover {
-      color: #494c6b;
+      color: $hover-grey;
       cursor: pointer;
     }
 
     &--dark {
-      color: #5b5e7e;
+      color: $dark--grey;
     }
 
     &--light {
-      color: #9495a5;
+      color: $light--grey;
     }
   }
 
   &--footer {
     background: none;
     border: none;
-    color: #9495a5;
+    color: $light--grey;
     font-family: "Josefin Sans", sans-serif;
     font-weight: bold;
-    font-size: 14px;
+    font-size: px-to-rem(14);
 
     &:active {
-      color: #3a7cfd;
+      color: $active-blue;
     }
 
     &:hover {
-      color: #494c6b;
+      color: $hover-grey;
       cursor: pointer;
     }
   }
@@ -57,38 +58,38 @@ body {
   &--hidden {
     background: none;
     border: none;
-    color: #9495a5;
+    color: $light--grey;
     display: none;
     font-family: "Josefin Sans", sans-serif;
     font-weight: bold;
-    font-size: 14px;
+    font-size: px-to-rem(14);
 
     @include respond(m) {
       display: block;
     }
 
     &:active {
-      color: #3a7cfd;
+      color: $active-blue;
     }
 
     &:hover {
-      color: #494c6b;
+      color: $hover-grey;
       cursor: pointer;
     }
   }
 }
 
 .check {
-  left: 27px;
+  left: px-to-rem(27);
   position: absolute;
-  top: 20px;
+  top: px-to-rem(20);
 
   &--dark {
-    stroke: #25273d;
+    stroke: $check-dark;
   }
 
   &--completed {
-    stroke: #fff;
+    stroke: $check-white;
   }
 }
 
@@ -96,62 +97,62 @@ body {
   border-radius: 50%;
   cursor: pointer;
   display: block;
-  height: 22px;
-  width: 22px;
+  height: px-to-rem(22);
+  width: px-to-rem(22);
 
   &--light {
-    border: 1px solid #ccc;
+    border: px-to-rem(1) solid $checkbox-label--light;
 
     &:hover {
-      background: linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(165deg, #55ddff, #c058f3) border-box;
-      border: 1px solid transparent;
+      background: linear-gradient($white, $white) padding-box,
+        linear-gradient(165deg, $linear-blue, $linear-purple) border-box;
+      border: px-to-rem(1) solid transparent;
     }
   }
 
   &--dark {
-    border: 1px solid #393a4b;
+    border: px-to-rem(1) solid $checkbox-label--dark;
 
     &:hover {
-      background: linear-gradient(#25273d, #25273d) padding-box,
-        linear-gradient(165deg, #55ddff, #c058f3) border-box;
-      border: 1px solid transparent;
+      background: linear-gradient($check-dark, $check-dark) padding-box,
+        linear-gradient(165deg, $linear-blue, $linear-purple) border-box;
+      border: px-to-rem(1) solid transparent;
     }
   }
 }
 
 .circle {
-  border: 1px solid #e3e4f1;
+  border: px-to-rem(1) solid circle;
   border-radius: 50%;
-  bottom: 20px;
-  height: 22px;
-  left: 24px;
+  bottom: px-to-rem(20);
+  height: px-to-rem(22);
+  left: px-to-rem(24);
   margin: auto;
   position: absolute;
-  width: 22px;
+  width: px-to-rem(22);
 }
 
 .cross {
   position: absolute;
-  right: 20px;
-  top: 17px;
+  right: px-to-rem(20);
+  top: px-to-rem(17);
 }
 
 .dad-info {
-  margin-top: 49px;
+  margin-top: px-to-rem(49);
   text-align: center;
 
   &--dark {
-    color: #5b5e7e;
+    color: $dad-dark;
   }
 
   &--light {
-    color: #9495a5;
+    color: $dad-light;
   }
 }
 
 .new-todo {
-  margin-left: 24px;
+  margin-left: px-to-rem(24);
 
   &::placeholder {
     font-family: "Josefin Sans", sans-serif;
@@ -171,7 +172,7 @@ body {
   }
 
   & input[type="checkbox"]:checked + label {
-    background: linear-gradient(165deg, #55ddff, #c058f3);
+    background: linear-gradient(165deg, $linear-blue, $linear-purple);
   }
 
   & input[type="checkbox"]:checked + label:after {
@@ -179,46 +180,46 @@ body {
   }
 
   .label-checked {
-    background: linear-gradient(165deg, #55ddff, #c058f3);
+    background: linear-gradient(165deg, $linear-blue, $linear-purple);
     opacity: 1;
-    stroke: #fff;
+    stroke: $white;
 
     &:hover {
-      border: 1px solid transparent;
+      border: px-to-rem(1) solid transparent;
       background: linear-gradient(transparent, transparent) padding-box,
-        linear-gradient(165deg, #55ddff, #c058f3) border-box;
+        linear-gradient(165deg, $linear-blue, $linear-purple) border-box;
     }
   }
 
   & span {
-    padding-left: 24px;
+    padding-left: px-to-rem(24);
   }
 }
 
 .todo {
   &-app {
     background: none;
-    border-radius: 5px;
+    border-radius: px-to-rem(5);
     font-family: "Josefin Sans", sans-serif;
 
     margin: 0 auto;
-    width: 327px;
+    width: px-to-rem(327);
     position: absolute;
     right: 50%;
-    top: 123px;
+    top: px-to-rem(123);
     transform: translateX(50%);
 
     @include respond(m) {
-      width: 541px;
+      width: px-to-rem(541);
     }
   }
 
   &-background--light {
-    background: #fafafa;
+    background: $todo-light;
   }
 
   &-background--dark {
-    background: #171823;
+    background: $todo-dark;
   }
 
   &-container {
@@ -227,21 +228,21 @@ body {
 
   &-footer {
     @include respond(l) {
-      border-bottom: 1px solid #e3e4f1;
-      padding: 0 24px;
+      border-bottom: px-to-rem(1) solid $footer-border;
+      padding: 0 px-to-rem(24);
     }
 
     &--buttons {
       align-items: center;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0px -6px 20px -17px black;
+      background-color: $white;
+      border-radius: px-to-rem(5);
+      box-shadow: 0px px-to-rem(-6) px-to-rem(20) px-to-rem(-17) $black;
       display: flex;
-      height: 48px;
+      height: px-to-rem(48);
       justify-content: space-between;
       list-style: none;
-      margin-top: 16px;
-      padding: 0 80px;
+      margin-top: px-to-rem(16);
+      padding: 0 px-to-rem(80);
     }
 
     &--buttons-container {
@@ -254,18 +255,22 @@ body {
 
     &--completed {
       align-items: center;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 px-to-rem(5) px-to-rem(5) 0;
       display: flex;
       justify-content: space-between;
       overflow: hidden;
-      padding: 7px 0;
+      padding: px-to-rem(7) 0;
       width: 100%;
     }
 
     &--completed-container {
-      border-radius: 0 0 5px 5px;
+      border-radius: 0 0 px-to-rem(5) px-to-rem(5);
       margin-top: 0;
-      padding: 0 20px;
+      padding: 0 px-to-rem(20);
+
+      @include respond(m) {
+        padding: 0 px-to-rem(24);
+      }
     }
 
     &--clear {
@@ -273,9 +278,9 @@ body {
     }
 
     &--light {
-      background-color: #fff;
-      box-shadow: 1px 17px 20px -8px rgba(0, 0, 0, 0.8);
-      color: #9495a5;
+      background-color: $white;
+      box-shadow: px-to-rem(1) px-to-rem(17) px-to-rem(20) px-to-rem(-8) $black;
+      color: $footer--light;
       letter-spacing: -0.17px;
       margin: 0;
     }
@@ -288,22 +293,22 @@ body {
   &-item {
     align-items: center;
     display: flex;
-    height: 48px;
+    height: px-to-rem(48);
     justify-content: flex-start;
 
     &:first-child {
-      border-radius: 5px 5px 0 0;
+      border-radius: px-to-rem(5) px-to-rem(5) 0 0;
     }
 
     &--dark {
-      background: #25273d;
-      border-bottom: 1px solid #393a4b;
-      color: #c8cbe7;
+      background: $item--dark-background;
+      border-bottom: px-to-rem(1) solid $item--dark-border;
+      color: $item--dark-color;
     }
 
     &--light {
-      background: white;
-      border-bottom: 1px solid #e3e4f1;
+      background: $item--light-background;
+      border-bottom: px-to-rem(1) solid $item--light-border;
     }
 
     &--completed {
@@ -311,11 +316,11 @@ body {
     }
 
     &--completed--dark {
-      color: #4d5067;
+      color: $item-completed--dark;
     }
 
     &--completed--light {
-      color: #d1d2da;
+      color: $item-completed--light;
     }
   }
 
@@ -326,20 +331,20 @@ body {
     padding: 0;
 
     @include respond(m) {
-      width: 541px;
+      width: px-to-rem(541);
     }
   }
 
   &-new {
     align-items: center;
-    background: white;
-    border-radius: 5px;
+    background: $white;
+    border-radius: px-to-rem(5);
     display: flex;
-    height: 48px;
+    height: px-to-rem(48);
     list-style: none;
 
     @include respond(m) {
-      width: 541px;
+      width: px-to-rem(541);
     }
 
     input {
@@ -349,34 +354,34 @@ body {
 
   &-title {
     align-items: center;
-    color: hsl(0, 0%, 100%);
+    color: $title--light-background;
     display: flex;
-    font-size: 20px;
+    font-size: px-to-rem(20);
     justify-content: space-between;
-    letter-spacing: 15px;
+    letter-spacing: px-to-rem(15);
     position: absolute;
     right: 50%;
-    top: 48px;
+    top: px-to-rem(48);
     transform: translateX(50%);
-    width: 324px;
+    width: px-to-rem(324);
 
     @include respond(m) {
-      width: 541px;
+      width: px-to-rem(541);
     }
 
     h1 {
       margin: 0;
-      font-size: 30px;
+      font-size: px-to-rem(30);
     }
   }
 
   &--dark {
-    background: #25273d;
-    color: #5b5e7e;
+    background: $title--dark-background;
+    color: $title--light-color;
   }
 
   &--light {
-    background: white;
-    color: #9495a5;
+    background: $title--light-background;
+    color: $title--light-color;
   }
 }
