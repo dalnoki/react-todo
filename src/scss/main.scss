@@ -1,0 +1,387 @@
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/functions" as *;
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 12px;
+}
+
+.button {
+  &--theme-change {
+    background: none;
+    border: none;
+  }
+
+  &--clear {
+    background: none;
+    border: none;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: px-to-rem(12);
+
+    &:active {
+      color: $active-blue;
+    }
+
+    &:hover {
+      color: $hover-grey;
+      cursor: pointer;
+    }
+
+    &--dark {
+      color: $dark--grey;
+    }
+
+    &--light {
+      color: $light--grey;
+    }
+  }
+
+  &--footer {
+    background: none;
+    border: none;
+    color: $light--grey;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    font-size: px-to-rem(14);
+
+    &:active {
+      color: $active-blue;
+    }
+
+    &:hover {
+      color: $hover-grey;
+      cursor: pointer;
+    }
+  }
+
+  &--hidden {
+    background: none;
+    border: none;
+    color: $light--grey;
+    display: none;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    font-size: px-to-rem(14);
+
+    @include respond(m) {
+      display: block;
+    }
+
+    &:active {
+      color: $active-blue;
+    }
+
+    &:hover {
+      color: $hover-grey;
+      cursor: pointer;
+    }
+  }
+}
+
+.check {
+  left: px-to-rem(27);
+  position: absolute;
+  top: px-to-rem(20);
+
+  &--dark {
+    stroke: $check-dark;
+  }
+
+  &--completed {
+    stroke: $check-white;
+  }
+}
+
+.checkbox-label {
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: px-to-rem(22);
+  width: px-to-rem(22);
+
+  &--light {
+    border: px-to-rem(1) solid $checkbox-label--light;
+
+    &:hover {
+      background: linear-gradient($white, $white) padding-box,
+        linear-gradient(165deg, $linear-blue, $linear-purple) border-box;
+      border: px-to-rem(1) solid transparent;
+    }
+  }
+
+  &--dark {
+    border: px-to-rem(1) solid $checkbox-label--dark;
+
+    &:hover {
+      background: linear-gradient($check-dark, $check-dark) padding-box,
+        linear-gradient(165deg, $linear-blue, $linear-purple) border-box;
+      border: px-to-rem(1) solid transparent;
+    }
+  }
+}
+
+.circle {
+  border: px-to-rem(1) solid circle;
+  border-radius: 50%;
+  bottom: px-to-rem(20);
+  height: px-to-rem(22);
+  left: px-to-rem(24);
+  margin: auto;
+  position: absolute;
+  width: px-to-rem(22);
+}
+
+.cross {
+  position: absolute;
+  right: px-to-rem(20);
+  top: px-to-rem(17);
+}
+
+.dad-info {
+  margin-top: px-to-rem(49);
+  text-align: center;
+
+  &--dark {
+    color: $dad-dark;
+  }
+
+  &--light {
+    color: $dad-light;
+  }
+}
+
+.new-todo {
+  margin-left: px-to-rem(24);
+
+  &::placeholder {
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  &:focus {
+    outline: none;
+    transform: scale(1.08);
+  }
+}
+
+.round {
+  position: relative;
+
+  & input[type="checkbox"] {
+    visibility: hidden;
+  }
+
+  & input[type="checkbox"]:checked + label {
+    background: linear-gradient(165deg, $linear-blue, $linear-purple);
+  }
+
+  & input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+
+  .label-checked {
+    background: linear-gradient(165deg, $linear-blue, $linear-purple);
+    opacity: 1;
+    stroke: $white;
+
+    &:hover {
+      border: px-to-rem(1) solid transparent;
+      background: linear-gradient(transparent, transparent) padding-box,
+        linear-gradient(165deg, $linear-blue, $linear-purple) border-box;
+    }
+  }
+
+  & span {
+    padding-left: px-to-rem(24);
+  }
+}
+
+.todo {
+  &-app {
+    background: none;
+    border-radius: px-to-rem(5);
+    font-family: "Josefin Sans", sans-serif;
+
+    margin: 0 auto;
+    width: px-to-rem(327);
+    position: absolute;
+    right: 50%;
+    top: px-to-rem(123);
+    transform: translateX(50%);
+
+    @include respond(m) {
+      width: px-to-rem(541);
+    }
+  }
+
+  &-background--light {
+    background: $todo-light;
+  }
+
+  &-background--dark {
+    background: $todo-dark;
+  }
+
+  &-container {
+    height: 100vh;
+  }
+
+  &-footer {
+    @include respond(l) {
+      border-bottom: px-to-rem(1) solid $footer-border;
+      padding: 0 px-to-rem(24);
+    }
+
+    &--buttons {
+      align-items: center;
+      background-color: $white;
+      border-radius: px-to-rem(5);
+      box-shadow: 0px px-to-rem(-6) px-to-rem(20) px-to-rem(-17) $black;
+      display: flex;
+      height: px-to-rem(48);
+      justify-content: space-between;
+      list-style: none;
+      margin-top: px-to-rem(16);
+      padding: 0 px-to-rem(80);
+    }
+
+    &--buttons-container {
+      padding: 0;
+
+      @include respond(m) {
+        display: none;
+      }
+    }
+
+    &--completed {
+      align-items: center;
+      border-radius: 0 px-to-rem(5) px-to-rem(5) 0;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: px-to-rem(7) 0;
+      width: 100%;
+    }
+
+    &--completed-container {
+      border-radius: 0 0 px-to-rem(5) px-to-rem(5);
+      margin-top: 0;
+      padding: 0 px-to-rem(20);
+
+      @include respond(m) {
+        padding: 0 px-to-rem(24);
+      }
+    }
+
+    &--clear {
+      display: flex;
+    }
+
+    &--light {
+      background-color: $white;
+      box-shadow: px-to-rem(1) px-to-rem(17) px-to-rem(20) px-to-rem(-8) $black;
+      color: $footer--light;
+      letter-spacing: -0.17px;
+      margin: 0;
+    }
+  }
+
+  &-header {
+    position: relative;
+  }
+
+  &-item {
+    align-items: center;
+    display: flex;
+    height: px-to-rem(48);
+    justify-content: flex-start;
+
+    &:first-child {
+      border-radius: px-to-rem(5) px-to-rem(5) 0 0;
+    }
+
+    &--dark {
+      background: $item--dark-background;
+      border-bottom: px-to-rem(1) solid $item--dark-border;
+      color: $item--dark-color;
+    }
+
+    &--light {
+      background: $item--light-background;
+      border-bottom: px-to-rem(1) solid $item--light-border;
+    }
+
+    &--completed {
+      text-decoration: line-through;
+    }
+
+    &--completed--dark {
+      color: $item-completed--dark;
+    }
+
+    &--completed--light {
+      color: $item-completed--light;
+    }
+  }
+
+  &-list {
+    list-style: none;
+    margin-bottom: 0;
+    overflow: hidden;
+    padding: 0;
+
+    @include respond(m) {
+      width: px-to-rem(541);
+    }
+  }
+
+  &-new {
+    align-items: center;
+    background: $white;
+    border-radius: px-to-rem(5);
+    display: flex;
+    height: px-to-rem(48);
+    list-style: none;
+
+    @include respond(m) {
+      width: px-to-rem(541);
+    }
+
+    input {
+      border: none;
+    }
+  }
+
+  &-title {
+    align-items: center;
+    color: $title--light-background;
+    display: flex;
+    font-size: px-to-rem(20);
+    justify-content: space-between;
+    letter-spacing: px-to-rem(15);
+    position: absolute;
+    right: 50%;
+    top: px-to-rem(48);
+    transform: translateX(50%);
+    width: px-to-rem(324);
+
+    @include respond(m) {
+      width: px-to-rem(541);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: px-to-rem(30);
+    }
+  }
+
+  &--dark {
+    background: $title--dark-background;
+    color: $title--light-color;
+  }
+
+  &--light {
+    background: $title--light-background;
+    color: $title--light-color;
+  }
+}
