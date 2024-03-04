@@ -1,9 +1,9 @@
-export default function Footer({
-  allTodos,
-  setAllTodos,
-  setFilteredTodos,
-  currentTheme,
-}) {
+import { useContext } from "react";
+import { DarkModeContext } from "../context/DarkModeContext.jsx";
+
+export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
+  const { darkMode } = useContext(DarkModeContext);
+
   const notCompletedItems = allTodos.filter(
     (todo) => todo.isCompleted === false
   ).length;
@@ -30,7 +30,7 @@ export default function Footer({
     <>
       <ul
         className={`todo-footer--completed-container ${
-          currentTheme === "light" ? "todo--light" : "todo--dark"
+          darkMode ? "todo--dark" : "todo--light"
         }`}
       >
         <li className="todo-footer--completed">
@@ -48,9 +48,7 @@ export default function Footer({
           </button>
           <button
             className={`button--clear ${
-              currentTheme === "light"
-                ? "button--clear--light"
-                : "button--clear--dark"
+              darkMode ? "button--clear--dark" : "button--clear--light"
             }`}
             onClick={clearCompleted}
           >
@@ -61,7 +59,7 @@ export default function Footer({
       <ul className="todo-footer--buttons-container">
         <li
           className={`todo-footer--buttons ${
-            currentTheme === "light" ? "todo--light" : "todo--dark"
+            darkMode ? "todo--dark" : "todo--light"
           }`}
         >
           <button className="button--footer" onClick={showAll}>

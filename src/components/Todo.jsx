@@ -1,4 +1,6 @@
 import "../scss/main.scss";
+import { useContext } from "react";
+import { DarkModeContext } from "../context/DarkModeContext.jsx";
 
 export default function Todo({
   todo,
@@ -7,8 +9,9 @@ export default function Todo({
   id,
   isCompleted,
   setFilteredTodos,
-  currentTheme,
 }) {
+  const { darkMode } = useContext(DarkModeContext);
+
   const handleClick = (event) => {
     const updatedArray = allTodos.map((currentTodo) => {
       if (currentTodo.id === id) {
@@ -33,15 +36,21 @@ export default function Todo({
   };
 
   return (
-    <>
+    <div
+      className={`${
+        isCompleted === true ? "todo-item--completed" : null
+      } todo-item ${darkMode ? "todo-item--dark" : "todo-item--light"} ${
+        isCompleted && darkMode ? "todo-item--completed--dark" : ""
+      } 
+      
+      ${isCompleted && darkMode ? "todo-item--completed--dark" : ""} round`}
+    >
       <input type="checkbox" className="checkbox" />
       <label
         onClick={handleClick}
         htmlFor="checkbox"
         className={`checkbox-label ${
-          currentTheme === "light"
-            ? "checkbox-label--light"
-            : "checkbox-label--dark"
+          darkMode ? "checkbox-label--dark" : "checkbox-label--light"
         } ${isCompleted ? "label-checked" : ""}`}
       >
         <svg
@@ -52,9 +61,9 @@ export default function Todo({
         >
           <path
             fill="none"
-            className={`${
-              currentTheme === "light" ? "check--light" : "check--dark"
-            } ${isCompleted ? "label-checked" : ""}`}
+            className={`${darkMode ? "check--dark" : "check--light"} ${
+              isCompleted ? "label-checked" : ""
+            }`}
             strokeWidth="2"
             d="M1 4.304L3.696 7l6-6"
           />
@@ -74,6 +83,6 @@ export default function Todo({
           d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
         />
       </svg>
-    </>
+    </div>
   );
 }

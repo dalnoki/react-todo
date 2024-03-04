@@ -1,14 +1,15 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { DarkModeContext } from "../context/DarkModeContext.jsx";
 
 import Todo from "./Todo";
 
 export default function TodoList({
   filteredTodos,
-  currentTheme,
   allTodos,
   setAllTodos,
   setFilteredTodos,
 }) {
+  const { darkMode } = useContext(DarkModeContext);
   const dragItem = useRef();
   const dragOverItem = useRef();
 
@@ -32,6 +33,7 @@ export default function TodoList({
   return (
     <ul className="todo-list">
       {filteredTodos.map((currentTodo, index) => {
+        console.log(currentTodo.id);
         return (
           <li
             key={currentTodo.id}
@@ -40,25 +42,9 @@ export default function TodoList({
             onDragEnter={(e) => dragEnter(e, index)}
             onDragOver={(e) => e.preventDefault()}
             onDrop={drop}
-            className={`${
-              currentTodo.isCompleted === true ? "todo-item--completed" : null
-            } todo-item ${
-              currentTheme === "light" ? "todo-item--light" : "todo-item--dark"
-            } ${
-              currentTodo.isCompleted && currentTheme === "light"
-                ? "todo-item--completed--light"
-                : ""
-            } 
-              
-              ${
-                currentTodo.isCompleted && currentTheme === "dark"
-                  ? "todo-item--completed--dark"
-                  : ""
-              } round`}
           >
             <Todo
               todo={currentTodo}
-              currentTheme={currentTheme}
               allTodos={allTodos}
               setAllTodos={setAllTodos}
               setFilteredTodos={setFilteredTodos}

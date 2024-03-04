@@ -1,14 +1,20 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import "../scss/main.scss";
 import "../images/icon-check.svg";
+import { DarkModeContext } from "../context/DarkModeContext.jsx";
+import { useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddNewTodo({
   allTodos,
   setAllTodos,
   setFilteredTodos,
-  currentTheme,
 }) {
+  const id = uuidv4();
+
   const [value, setValue] = useState("");
+
+  const { darkMode } = useContext(DarkModeContext);
 
   const searchInput = useRef(null);
 
@@ -23,7 +29,7 @@ export default function AddNewTodo({
       {
         description: `${value}`,
         isCompleted: false,
-        id: Date.now(),
+        id: `${id}`,
       },
     ]);
     setFilteredTodos([
@@ -31,34 +37,27 @@ export default function AddNewTodo({
       {
         description: `${value}`,
         isCompleted: false,
-        id: Date.now(),
+        id: id,
       },
     ]);
     setValue("");
   };
-
   return (
     <form>
       <li
         draggable
-        className={`todo-new round ${
-          currentTheme === "light" ? "todo--light" : "todo--dark"
-        }`}
+        className={`todo-new round ${darkMode ? "todo--dark" : "todo--light"}`}
       >
         <input type="checkbox" className="checkbox" />
         <label
           disabled
           htmlFor="checkbox"
           className={`checkbox-label ${
-            currentTheme === "light"
-              ? "checkbox-label--light"
-              : "checkbox-label--dark"
+            darkMode ? "checkbox-label--dark" : "checkbox-label--light"
           }`}
         ></label>
         <input
-          className={`new-todo ${
-            currentTheme === "light" ? "todo--light" : "todo--dark"
-          }`}
+          className={`new-todo ${darkMode ? "todo--dark" : "todo--light"}`}
           placeholder="Create a new todo..."
           onChange={handleChange}
           ref={searchInput}
