@@ -1,6 +1,7 @@
 import "../scss/main.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext.jsx";
+import clsx from "clsx";
 
 export default function Todo({
   todo,
@@ -30,29 +31,36 @@ export default function Todo({
 
   const handleDelete = (event) => {
     const filtered = allTodos.filter((todo) => todo.id !== id);
-    console.log(filtered);
     setAllTodos(filtered);
     setFilteredTodos(filtered);
   };
 
+  const todoStyles = clsx({
+    ["todo-item"]: true,
+    ["round"]: true,
+    ["todo-item--completed"]: isCompleted,
+    ["todo-item--dark"]: darkMode,
+    ["todo-item--completed--dark"]: darkMode && isCompleted,
+    ["todo-item--light"]: !darkMode,
+  });
+
+  const labelStyles = clsx({
+    ["checkbox-label"]: true,
+    ["label-checked"]: isCompleted,
+    ["checkbox-label--dark"]: darkMode,
+    ["checkbox-label--light"]: !darkMode,
+  });
+
+  const checkStyles = clsx({
+    ["check--dark"]: darkMode,
+    ["check--light"]: !darkMode,
+    ["label-checked"]: isCompleted,
+  });
+
   return (
-    <div
-      className={`${
-        isCompleted === true ? "todo-item--completed" : null
-      } todo-item ${darkMode ? "todo-item--dark" : "todo-item--light"} ${
-        isCompleted && darkMode ? "todo-item--completed--dark" : ""
-      } 
-      
-      ${isCompleted && darkMode ? "todo-item--completed--dark" : ""} round`}
-    >
+    <div className={todoStyles}>
       <input type="checkbox" className="checkbox" />
-      <label
-        onClick={handleClick}
-        htmlFor="checkbox"
-        className={`checkbox-label ${
-          darkMode ? "checkbox-label--dark" : "checkbox-label--light"
-        } ${isCompleted ? "label-checked" : ""}`}
-      >
+      <label onClick={handleClick} htmlFor="checkbox" className={labelStyles}>
         <svg
           className="check"
           xmlns="http://www.w3.org/2000/svg"
@@ -61,9 +69,7 @@ export default function Todo({
         >
           <path
             fill="none"
-            className={`${darkMode ? "check--dark" : "check--light"} ${
-              isCompleted ? "label-checked" : ""
-            }`}
+            className={checkStyles}
             strokeWidth="2"
             d="M1 4.304L3.696 7l6-6"
           />

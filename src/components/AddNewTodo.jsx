@@ -4,6 +4,7 @@ import "../images/icon-check.svg";
 import { DarkModeContext } from "../context/DarkModeContext.jsx";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+import clsx from "clsx";
 
 export default function AddNewTodo({
   allTodos,
@@ -15,8 +16,6 @@ export default function AddNewTodo({
   const [value, setValue] = useState("");
 
   const { darkMode } = useContext(DarkModeContext);
-
-  const searchInput = useRef(null);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -42,25 +41,39 @@ export default function AddNewTodo({
     ]);
     setValue("");
   };
+
+  const newTodoStyles = clsx({
+    ["todo-new"]: true,
+    ["round"]: true,
+    ["todo--dark"]: darkMode,
+    ["todo--light"]: !darkMode,
+  });
+
+  const newTodoLabelStyle = clsx({
+    ["checkbox-label"]: true,
+    ["checkbox-label--dark"]: darkMode,
+    ["checkbox-label--light"]: !darkMode,
+  });
+
+  const newTodoInputStyles = clsx({
+    ["new-todo"]: true,
+    ["todo--dark"]: darkMode,
+    ["todo--light"]: !darkMode,
+  });
+
   return (
     <form>
-      <li
-        draggable
-        className={`todo-new round ${darkMode ? "todo--dark" : "todo--light"}`}
-      >
+      <li draggable className={newTodoStyles}>
         <input type="checkbox" className="checkbox" />
         <label
           disabled
           htmlFor="checkbox"
-          className={`checkbox-label ${
-            darkMode ? "checkbox-label--dark" : "checkbox-label--light"
-          }`}
+          className={newTodoLabelStyle}
         ></label>
         <input
-          className={`new-todo ${darkMode ? "todo--dark" : "todo--light"}`}
+          className={newTodoInputStyles}
           placeholder="Create a new todo..."
           onChange={handleChange}
-          ref={searchInput}
           value={value}
         />
       </li>

@@ -8,6 +8,7 @@ import TodoList from "./TodoList.jsx";
 import DragAndDrop from "./DragAndDrop.jsx";
 import { DarkModeContext } from "../context/DarkModeContext.jsx";
 import { useContext } from "react";
+import clsx from "clsx";
 
 const demoArray = [
   {
@@ -33,12 +34,14 @@ export default function TodoApp() {
 
   const { darkMode } = useContext(DarkModeContext);
 
+  const appStyles = clsx({
+    ["todo-container"]: true,
+    ["todo-background--dark"]: darkMode,
+    ["todo-background--light"]: !darkMode,
+  });
+
   return (
-    <div
-      className={`todo-container ${
-        darkMode ? "todo-background--dark" : "todo-background--light"
-      }`}
-    >
+    <div className={appStyles}>
       <Header currentTheme={darkMode} />
       <div className="todo-app">
         <AddNewTodo

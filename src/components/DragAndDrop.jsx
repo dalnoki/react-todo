@@ -1,14 +1,15 @@
 import { DarkModeContext } from "../context/DarkModeContext.jsx";
 import { useContext } from "react";
+import clsx from "clsx";
 
 export default function DragAndDrop() {
   const { darkMode } = useContext(DarkModeContext);
 
-  return (
-    <p
-      className={`dad-info ${darkMode ? "dad-info--dark" : "dad-info--light"}`}
-    >
-      Drag and drop to reorder list
-    </p>
-  );
+  const newTodoInputStyles = clsx({
+    ["dad-info"]: true,
+    ["dad-info--dark"]: darkMode,
+    ["dad-info--light"]: !darkMode,
+  });
+
+  return <p className={newTodoInputStyles}>Drag and drop to reorder list</p>;
 }

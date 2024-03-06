@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext.jsx";
+import Button from "./Button.jsx";
+import clsx from "clsx";
 
 export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
   const { darkMode } = useContext(DarkModeContext);
@@ -26,51 +28,55 @@ export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
     setFilteredTodos(filtered);
   };
 
+  const footerContainerStyle = clsx({
+    ["todo-footer--completed-container"]: true,
+    ["todo--dark"]: darkMode,
+    ["todo--light"]: !darkMode,
+  });
+
+  const clearButtonStyle = clsx({
+    ["button--clear"]: true,
+    ["button--clear--dark"]: darkMode,
+    ["button--clear--light"]: !darkMode,
+  });
+
+  const footerButtons = clsx({
+    ["todo-footer--buttons"]: true,
+    ["todo--dark"]: darkMode,
+    ["todo--light"]: !darkMode,
+  });
   return (
     <>
-      <ul
-        className={`todo-footer--completed-container ${
-          darkMode ? "todo--dark" : "todo--light"
-        }`}
-      >
+      <ul className={footerContainerStyle}>
         <li className="todo-footer--completed">
           <p>
             {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
           </p>
-          <button className="button--hidden" onClick={showAll}>
+          <Button className={"button--hidden"} onClick={showAll}>
             All
-          </button>
-          <button className="button--hidden" onClick={showActive}>
+          </Button>
+          <Button className={"button--hidden"} onClick={showActive}>
             Active
-          </button>
-          <button className="button--hidden" onClick={showCompleted}>
+          </Button>
+          <Button className={"button--hidden"} onClick={showCompleted}>
             Completed
-          </button>
-          <button
-            className={`button--clear ${
-              darkMode ? "button--clear--dark" : "button--clear--light"
-            }`}
-            onClick={clearCompleted}
-          >
+          </Button>
+          <Button className={clearButtonStyle} onClick={clearCompleted}>
             Clear Completed
-          </button>
+          </Button>
         </li>
       </ul>
       <ul className="todo-footer--buttons-container">
-        <li
-          className={`todo-footer--buttons ${
-            darkMode ? "todo--dark" : "todo--light"
-          }`}
-        >
-          <button className="button--footer" onClick={showAll}>
+        <li className={footerButtons}>
+          <Button className={"button--footer"} onClick={showAll}>
             All
-          </button>
-          <button className="button--footer" onClick={showActive}>
+          </Button>
+          <Button className={"button--footer"} onClick={showActive}>
             Active
-          </button>
-          <button className="button--footer" onClick={showCompleted}>
+          </Button>
+          <Button className={"button--footer"} onClick={showCompleted}>
             Completed
-          </button>
+          </Button>
         </li>
       </ul>
     </>

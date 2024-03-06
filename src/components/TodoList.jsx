@@ -1,5 +1,4 @@
 import { useRef, useContext } from "react";
-import { DarkModeContext } from "../context/DarkModeContext.jsx";
 
 import Todo from "./Todo";
 
@@ -9,15 +8,14 @@ export default function TodoList({
   setAllTodos,
   setFilteredTodos,
 }) {
-  const { darkMode } = useContext(DarkModeContext);
   const dragItem = useRef();
   const dragOverItem = useRef();
 
-  const dragStart = (e, index) => {
+  const dragStart = (_, index) => {
     dragItem.current = index;
   };
 
-  const dragEnter = (e, index) => {
+  const dragEnter = (_, index) => {
     dragOverItem.current = index;
   };
 
