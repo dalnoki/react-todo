@@ -28,10 +28,33 @@ export default function TodoList({
     dragOverItem.current = null;
     setFilteredTodos(copyListItems); // Update the state with the reordered list
   };
+
+  const handleDelete = (id) => {
+    const filtered = allTodos.filter((todo) => todo.id !== id);
+
+    setAllTodos(filtered);
+    setFilteredTodos(filtered);
+  };
+
+  const handleClick = (id) => {
+    const updatedArray = allTodos.map((currentTodo) => {
+      if (currentTodo.id === id) {
+        return {
+          ...currentTodo,
+          isCompleted: !currentTodo.isCompleted,
+        };
+      }
+
+      return currentTodo;
+    });
+
+    setAllTodos(updatedArray);
+    setFilteredTodos(updatedArray);
+  };
+
   return (
     <ul className="todo-list">
       {filteredTodos.map((currentTodo, index) => {
-        console.log(currentTodo.id);
         return (
           <li
             key={currentTodo.id}
@@ -43,10 +66,8 @@ export default function TodoList({
           >
             <Todo
               todo={currentTodo}
-              allTodos={allTodos}
-              setAllTodos={setAllTodos}
-              setFilteredTodos={setFilteredTodos}
-              id={currentTodo.id}
+              handleDelete={handleDelete}
+              handleClick={handleClick}
               isCompleted={currentTodo.isCompleted}
             />
           </li>

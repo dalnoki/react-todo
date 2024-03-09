@@ -63,7 +63,7 @@ export default function AddNewTodo({
 
   return (
     <form>
-      <li draggable className={newTodoStyles}>
+      <li className={newTodoStyles}>
         <input type="checkbox" />
         <label
           disabled

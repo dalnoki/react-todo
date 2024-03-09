@@ -3,37 +3,8 @@ import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext.jsx";
 import clsx from "clsx";
 
-export default function Todo({
-  todo,
-  allTodos,
-  setAllTodos,
-  id,
-  isCompleted,
-  setFilteredTodos,
-}) {
+export default function Todo({ todo, handleDelete, handleClick, isCompleted }) {
   const { darkMode } = useContext(DarkModeContext);
-
-  const handleClick = (event) => {
-    const updatedArray = allTodos.map((currentTodo) => {
-      if (currentTodo.id === id) {
-        return {
-          ...currentTodo,
-          isCompleted: !isCompleted,
-        };
-      } else {
-        return currentTodo;
-      }
-    });
-
-    setAllTodos(updatedArray);
-    setFilteredTodos(updatedArray);
-  };
-
-  const handleDelete = (event) => {
-    const filtered = allTodos.filter((todo) => todo.id !== id);
-    setAllTodos(filtered);
-    setFilteredTodos(filtered);
-  };
 
   const todoStyles = clsx({
     ["todo-item"]: true,
@@ -60,7 +31,11 @@ export default function Todo({
   return (
     <div className={todoStyles}>
       <input type="checkbox" className="checkbox" />
-      <label onClick={handleClick} htmlFor="checkbox" className={labelStyles}>
+      <label
+        onClick={() => handleClick(todo.id)}
+        htmlFor="checkbox"
+        className={labelStyles}
+      >
         <svg
           className="check"
           xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +53,7 @@ export default function Todo({
       <span>{todo.description}</span>
       <svg
         className="cross"
-        onClick={handleDelete}
+        onClick={() => handleDelete(todo.id)}
         xmlns="http://www.w3.org/2000/svg"
         width="18"
         height="18"
