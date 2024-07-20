@@ -11,9 +11,7 @@ export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
   ).length;
 
   const clearCompleted = () => {
-    const filtered = allTodos.filter((todo) => todo.isCompleted === false);
-    setAllTodos(filtered);
-    setFilteredTodos(filtered);
+    throw Error("clearCompleted is not defined");
   };
 
   const showAll = (e) => {
@@ -27,6 +25,8 @@ export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
     const filtered = allTodos.filter((todo) => todo.isCompleted === true);
     setFilteredTodos(filtered);
   };
+
+  const pluralize = notCompletedItems === 1 ? "" : "s";
 
   const footerContainerStyle = clsx({
     ["todo-footer--completed-container"]: true,
@@ -50,7 +50,7 @@ export default function Footer({ allTodos, setAllTodos, setFilteredTodos }) {
       <ul className={footerContainerStyle}>
         <li className="todo-footer--completed">
           <p>
-            {notCompletedItems} item{notCompletedItems === 1 ? `` : `s`} left
+            {notCompletedItems} item{pluralize} left
           </p>
           <Button className={"button--hidden"} onClick={showAll}>
             All

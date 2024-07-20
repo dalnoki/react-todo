@@ -30,10 +30,7 @@ export default function TodoList({
   };
 
   const handleDelete = (id) => {
-    const filtered = allTodos.filter((todo) => todo.id !== id);
-
-    setAllTodos(filtered);
-    setFilteredTodos(filtered);
+    throw Error("Not implemented");
   };
 
   const handleClick = (id) => {

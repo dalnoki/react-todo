@@ -10,27 +10,9 @@ import { DarkModeContext } from "../context/DarkModeContext.jsx";
 import { useContext } from "react";
 import clsx from "clsx";
 
-const demoArray = [
-  {
-    description: "Jog in the park",
-    isCompleted: false,
-    id: 1,
-  },
-  {
-    description: "Walk the dog",
-    isCompleted: false,
-    id: 2,
-  },
-  {
-    description: "Walk the dog",
-    isCompleted: false,
-    id: 3,
-  },
-];
-
 export default function TodoApp() {
-  const [allTodos, setAllTodos] = useState(demoArray);
-  const [filteredTodos, setFilteredTodos] = useState(demoArray);
+  const [allTodos, setAllTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   const { darkMode } = useContext(DarkModeContext);
 
@@ -51,17 +33,21 @@ export default function TodoApp() {
         />
         <TodoList
           filteredTodos={filteredTodos}
-          isDarkMode={darkMode}
           allTodos={allTodos}
           setAllTodos={setAllTodos}
           setFilteredTodos={setFilteredTodos}
         />
-        <Footer
-          allTodos={allTodos}
-          setAllTodos={setAllTodos}
-          setFilteredTodos={setFilteredTodos}
-        />
-        <DragAndDrop />
+
+        {allTodos.length > 0 && (
+          <>
+            <Footer
+              allTodos={allTodos}
+              setAllTodos={setAllTodos}
+              setFilteredTodos={setFilteredTodos}
+            />
+            <DragAndDrop allTodos={allTodos} />
+          </>
+        )}
       </div>
     </div>
   );

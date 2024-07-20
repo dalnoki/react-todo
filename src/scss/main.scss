@@ -149,6 +149,10 @@ body {
   &--light {
     color: $dad-light;
   }
+
+  &--hidden {
+    display: none !important;
+  }
 }
 
 .new-todo {
